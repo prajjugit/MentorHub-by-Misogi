@@ -1,0 +1,177 @@
+import React from 'react';
+import { useHistory, Link as RouterLink } from 'react-router-dom';
+import { Card, CardBody, Input, Button, Link, Checkbox, addToast } from '@heroui/react';
+import { Icon } from '@iconify/react';
+import { useAuth } from '../contexts/auth-context';
+
+/**
+ * LoginPage component handles user authentication
+ * 
+ * This component:
+ * - Renders a login form
+ * - Validates user input
+ * - Calls the authentication service
+ * - Redirects to dashboard on success
+ * 
+ * For Clerk integration:
+ * - Replace the form with Clerk's <SignIn /> component
+ * - Or use Clerk's useSignIn hook with a custom form
+ */
+const LoginPage: React.FC = () => {
+  // Form state
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [rememberMe, setRememberMe] = React.useState(false);
+  
+  // Auth context and routing
+  const { login } = useAuth();
+  const history = useHistory();
+
+  /**
+   * Handles form submission for login
+   * 
+   * For Clerk integration:
+   * - Replace with Clerk's signIn method
+   * - Handle authentication flow according to Clerk's documentation
+   * 
+   * @param e - Form submit event
+   */
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate form inputs
+    if (!email || !password) {
+      addToast({
+        title: "Error",
+        description: "Please enter both email and password",
+        severity: "danger",
+      });
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      
+      // Call the login method from auth context
+      // REPLACE THIS: For Clerk integration, use Clerk's signIn method
+      // Example: await clerk.signIn.create({ identifier: email, password });
+      await login(email, password);
+      
+      // Show success message
+      addToast({
+        title: "Success",
+        description: "You have successfully logged in",
+        severity: "success",
+      });
+      
+      // Redirect to dashboard
+      history.push('/dashboard');
+    } catch (error) {
+      // Show error message
+      addToast({
+        title: "Error",
+        description: "Invalid email or password",
+        severity: "danger",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex justify-center items-center min-h-[calc(100vh-200px)] py-12 px-4">
+      <Card className="w-full max-w-md card-shadow border-none">
+        <CardBody className="p-8">
+          <div className="text-center mb-8">
+            <h1 className="text-2xl font-bold mb-2">Welcome back</h1>
+            <p className="text-gray-600">Sign in to your MentorHub account</p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <Input
+              type="email"
+              label="Email"
+              placeholder="Enter your email"
+              value={email}
+              onValueChange={setEmail}
+              startContent={
+                <Icon icon="lucide:mail" className="text-default-400 text-lg" />
+              }
+              isRequired
+            />
+            
+            <Input
+              type="password"
+              label="Password"
+              placeholder="Enter your password"
+              value={password}
+              onValueChange={setPassword}
+              startContent={
+                <Icon icon="lucide:lock" className="text-default-400 text-lg" />
+              }
+              isRequired
+            />
+
+            <div className="flex items-center justify-between">
+              <Checkbox 
+                isSelected={rememberMe} 
+                onValueChange={setRememberMe}
+                size="sm"
+              >
+                Remember me
+              </Checkbox>
+              <Link href="#" size="sm">Forgot password?</Link>
+            </div>
+
+            <Button 
+              type="submit" 
+              color="primary" 
+              className="w-full"
+              isLoading={isLoading}
+            >
+              Sign In
+            </Button>
+          </form>
+
+          <div className="mt-6">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-200"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              </div>
+            </div>
+
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              <Button 
+                variant="bordered" 
+                className="w-full"
+                startContent={<Icon icon="logos:google-icon" className="text-lg" />}
+              >
+                Google
+              </Button>
+              <Button 
+                variant="bordered" 
+                className="w-full"
+                startContent={<Icon icon="logos:github-icon" className="text-lg" />}
+              >
+                GitHub
+              </Button>
+            </div>
+          </div>
+
+          <p className="text-center mt-8 text-sm text-gray-600">
+            Don't have an account?{' '}
+            <Link as={RouterLink} to="/register" color="primary">
+              Sign up
+            </Link>
+          </p>
+        </CardBody>
+      </Card>
+    </div>
+  );
+};
+
+export default LoginPage;

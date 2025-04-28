@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# dotenv environment variables
+.env
+.env.*
+
+# Vite cache
+.vite
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Mac system files
+.DS_Store
+
+# Output build directories
+dist/
+build/
+
+# IDE files
+.idea/
+.vscode/
