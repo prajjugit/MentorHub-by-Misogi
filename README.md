@@ -1,4 +1,4 @@
-# MentorHub by Misogi
+# MentorHub by MisogiAi
 
 MentorHub is a modern mentorship platform built with React, Vite, and Tailwind CSS. It enables users to connect with mentors, schedule sessions, and manage their mentorship journey efficiently.
 
