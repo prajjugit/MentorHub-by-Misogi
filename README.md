@@ -1,22 +1,56 @@
-<<<<<<< HEAD
-# Misogi
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-# Misogi
-=======
->>>>>>> db3d491 (Initial clean commit (node_modules, .env, etc. ignored))
-# React + Tailwind
+# MentorHub by Misogi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. One top of the standard Vite setup, [tailwindcss](https://tailwindcss.com/) is installed and ready to be used in React components.
+MentorHub is a modern mentorship platform built with React, Vite, and Tailwind CSS. It enables users to connect with mentors, schedule sessions, and manage their mentorship journey efficiently.
 
-Additional references:
-* [Getting started with Vite](https://vitejs.dev/guide/)
-* [Tailwind documentation](https://tailwindcss.com/docs/installation)
+## Features
+- User authentication (login/register)
+- Mentor directory & profiles
+- Session booking and management
+- Dashboard for users and mentors
+- Responsive UI with Tailwind CSS
 
->>>>>>> fd593242 (Initial commit)
-<<<<<<< HEAD
-=======
->>>>>>> 81ca180 (Initial clean commit (node_modules, .env, etc. ignored))
->>>>>>> db3d491 (Initial clean commit (node_modules, .env, etc. ignored))
+## Tech Stack
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- TypeScript
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v16+ recommended)
+- npm or yarn
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/prajjugit/MentorHub-by-Misogi.git
+cd MentorHub-by-Misogi
+
+# Install dependencies
+npm install
+# or
+yarn install
+```
+
+### Running the App
+```bash
+npm run dev
+# or
+yarn dev
+```
+The app will be available at [http://localhost:5173](http://localhost:5173) by default.
+
+## Usage
+- Register or log in to your account
+- Browse mentors and book sessions
+- View your dashboard for upcoming sessions
+
+## Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT](LICENSE)
+
+---
+Built with ❤️ by the Misogi team.
