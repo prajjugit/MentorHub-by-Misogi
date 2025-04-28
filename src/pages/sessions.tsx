@@ -91,13 +91,14 @@ const SessionsPage: React.FC = () => {
   }, [selected, searchQuery, filter, upcomingSessions, pastSessions, pendingSessions]);
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Sessions</h1>
+    <div className="space-y-6 px-2 sm:px-4 md:px-8 py-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-xl sm:text-2xl font-bold">Sessions</h1>
         {isMentor && (
           <Button 
             color="primary"
             startContent={<Icon icon="lucide:calendar" />}
+            className="w-full sm:w-auto"
           >
             Manage Availability
           </Button>
@@ -119,7 +120,7 @@ const SessionsPage: React.FC = () => {
         </CardBody>
       </Card>
 
-      <div className="flex flex-col sm:flex-row gap-4 justify-between">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-between">
         <Input
           placeholder="Search sessions..."
           value={searchQuery}
@@ -154,7 +155,7 @@ const SessionsPage: React.FC = () => {
       </div>
 
       {filteredSessions.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredSessions.map((session) => (
             <SessionCard 
               key={session.id} 
@@ -166,13 +167,13 @@ const SessionsPage: React.FC = () => {
         </div>
       ) : (
         <Card className="card-shadow border-none">
-          <CardBody className="py-16 text-center">
+          <CardBody className="py-12 sm:py-16 text-center">
             <Icon 
               icon={selected === "pending" ? "lucide:inbox" : "lucide:calendar-x"} 
-              className="text-gray-400 text-5xl mx-auto mb-4" 
+              className="text-gray-400 text-4xl sm:text-5xl mx-auto mb-4" 
             />
-            <h3 className="text-xl font-medium mb-2">No {selected} sessions found</h3>
-            <p className="text-gray-500 mb-6">
+            <h3 className="text-lg sm:text-xl font-medium mb-2">No {selected} sessions found</h3>
+            <p className="text-gray-500 mb-4 sm:mb-6">
               {selected === "upcoming" 
                 ? "You don't have any upcoming sessions scheduled." 
                 : selected === "past" 

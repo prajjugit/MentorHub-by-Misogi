@@ -80,15 +80,15 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-200px)] py-12 px-4">
-      <Card className="w-full max-w-md card-shadow border-none">
-        <CardBody className="p-8">
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold mb-2">Welcome back</h1>
-            <p className="text-gray-600">Sign in to your MentorHub account</p>
+    <div className="flex justify-center items-center min-h-[calc(100vh-200px)] py-8 px-2 sm:py-12 sm:px-4 bg-gray-50 dark:bg-gray-900">
+      <Card className="w-full max-w-sm sm:max-w-md card-shadow border-none mx-2 sm:mx-0">
+        <CardBody className="p-4 sm:p-8">
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Welcome back</h1>
+            <p className="text-gray-600 text-sm sm:text-base">Sign in to your MentorHub account</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <Input
               type="email"
               label="Email"
@@ -113,7 +113,7 @@ const LoginPage: React.FC = () => {
               isRequired
             />
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
               <Checkbox 
                 isSelected={rememberMe} 
                 onValueChange={setRememberMe}
@@ -134,17 +134,17 @@ const LoginPage: React.FC = () => {
             </Button>
           </form>
 
-          <div className="mt-6">
+          <div className="mt-4 sm:mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-200"></div>
               </div>
-              <div className="relative flex justify-center text-sm">
+              <div className="relative flex justify-center text-xs sm:text-sm">
                 <span className="px-2 bg-white text-gray-500">Or continue with</span>
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Button 
                 variant="bordered" 
                 className="w-full"
@@ -162,7 +162,7 @@ const LoginPage: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-center mt-8 text-sm text-gray-600">
+          <p className="text-center mt-6 sm:mt-8 text-xs sm:text-sm text-gray-600">
             Don't have an account?{' '}
             <Link as={RouterLink} to="/register" color="primary">
               Sign up

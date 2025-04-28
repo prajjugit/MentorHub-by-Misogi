@@ -11,10 +11,34 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const { user, logout } = useAuth();
   const location = useLocation();
-  const [isSidebarOpen, setIsSidebarOpen] = React.useState(true);
+  // Track screen size for responsive sidebar logic
+  const [isMobile, setIsMobile] = React.useState(() => window.innerWidth < 640);
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(() => window.innerWidth >= 640);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+  // Update isMobile and sidebar state on resize
+  React.useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 640;
+      setIsMobile(mobile);
+      setIsSidebarOpen(!mobile); // Open sidebar on desktop, closed on mobile
+    };
+    window.addEventListener('resize', handleResize);
+    // Run on mount
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Hamburger toggles sidebar
+  const toggleSidebar = () => setIsSidebarOpen((open) => !open);
+
+  // Overlay click closes sidebar on mobile
+  const handleOverlayClick = () => {
+    if (isMobile) setIsSidebarOpen(false);
+  };
+
+  // Sidebar closes after nav on mobile
+  const handleNavClick = () => {
+    if (isMobile) setIsSidebarOpen(false);
   };
 
   const navItems = [
@@ -86,12 +110,28 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         </NavbarContent>
       </Navbar>
 
-      <div className="flex flex-grow">
+      <div className="flex flex-col sm:flex-row flex-grow relative">
+        {/* Overlay for mobile */}
+        {isMobile && isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-30 z-30 transition-opacity duration-200"
+            aria-hidden="true"
+            onClick={handleOverlayClick}
+          />
+        )}
         {/* Sidebar */}
-        <aside 
-          className={`bg-gray-50 border-r border-gray-200 transition-all duration-300 ${
-            isSidebarOpen ? 'w-64' : 'w-0 -ml-64'
-          }`}
+        <aside
+          id="sidebar"
+          className={`
+            bg-gray-50 border-r border-gray-200
+            w-64 transition-transform duration-300
+            fixed z-40 top-0 left-0 h-full
+            sm:static sm:z-auto sm:h-auto sm:translate-x-0
+            ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+            ${!isMobile ? 'block' : ''}
+          `}
+          aria-label="Sidebar navigation"
+          tabIndex={isSidebarOpen || !isMobile ? 0 : -1}
         >
           <div className="p-4">
             <div className="mb-6 mt-2">
@@ -103,7 +143,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                 </div>
               </div>
             </div>
-            
             <nav className="space-y-1">
               {navItems.map((item) => (
                 <Link
@@ -115,6 +154,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                       ? 'bg-primary-100 text-primary-600 font-medium'
                       : 'text-gray-700 hover:bg-gray-100'
                   }`}
+                  onClick={handleNavClick}
                 >
                   <Icon icon={item.icon} className="text-xl" />
                   <span>{item.label}</span>
@@ -123,7 +163,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             </nav>
           </div>
         </aside>
-
         {/* Main content */}
         <main className="flex-grow p-6 bg-gray-50">
           {children}

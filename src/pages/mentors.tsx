@@ -109,9 +109,9 @@ const MentorsPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Find Mentors</h1>
+    <div className="space-y-6 px-2 sm:px-4 md:px-8 py-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-xl sm:text-2xl font-bold">Find Mentors</h1>
       </div>
 
       <Card className="card-shadow border-none">
@@ -125,7 +125,7 @@ const MentorsPage: React.FC = () => {
               className="flex-1"
             />
             
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <Dropdown>
                 <DropdownTrigger>
                   <Button 
@@ -178,13 +178,13 @@ const MentorsPage: React.FC = () => {
 
       {paginatedMentors.length > 0 ? (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {paginatedMentors.map((mentor) => (
               <MentorCard key={mentor.id} mentor={mentor} />
             ))}
           </div>
           
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-6 sm:mt-8">
             <Pagination 
               total={totalPages} 
               page={page} 
@@ -195,13 +195,13 @@ const MentorsPage: React.FC = () => {
         </>
       ) : (
         <Card className="card-shadow border-none">
-          <CardBody className="py-16 text-center">
+          <CardBody className="py-12 sm:py-16 text-center">
             <Icon 
               icon="lucide:search-x" 
-              className="text-gray-400 text-5xl mx-auto mb-4" 
+              className="text-gray-400 text-4xl sm:text-5xl mx-auto mb-4" 
             />
-            <h3 className="text-xl font-medium mb-2">No mentors found</h3>
-            <p className="text-gray-500 mb-6">
+            <h3 className="text-lg sm:text-xl font-medium mb-2">No mentors found</h3>
+            <p className="text-gray-500 mb-4 sm:mb-6">
               Try adjusting your search or filters to find mentors.
             </p>
             <Button 

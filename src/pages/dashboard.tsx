@@ -29,52 +29,53 @@ const DashboardPage: React.FC = () => {
   const chartData = React.useMemo(() => generateMockChartData(), []);
   
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
+    <div className="space-y-6 px-2 sm:px-4 md:px-8 py-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-xl sm:text-2xl font-bold">Dashboard</h1>
         <Button 
           as={RouterLink} 
           to={isMentor ? "/sessions" : "/mentors"} 
           color="primary"
           startContent={<Icon icon={isMentor ? "lucide:calendar" : "lucide:users"} />}
+          className="w-full sm:w-auto"
         >
           {isMentor ? "Manage Sessions" : "Find Mentors"}
         </Button>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         <Card className="card-shadow border-none">
-          <CardBody className="p-6">
+          <CardBody className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs sm:text-sm text-gray-500">
                   {isMentor ? "Total Sessions" : "Sessions Attended"}
                 </p>
-                <p className="text-2xl font-bold mt-1">24</p>
+                <p className="text-xl sm:text-2xl font-bold mt-1">24</p>
               </div>
-              <div className="bg-primary-100 p-3 rounded-full">
-                <Icon icon="lucide:calendar" className="text-primary text-xl" />
+              <div className="bg-primary-100 p-2 sm:p-3 rounded-full">
+                <Icon icon="lucide:calendar" className="text-primary text-lg sm:text-xl" />
               </div>
             </div>
           </CardBody>
         </Card>
 
         <Card className="card-shadow border-none">
-          <CardBody className="p-6">
+          <CardBody className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs sm:text-sm text-gray-500">
                   {isMentor ? "Average Rating" : "Mentors Connected"}
                 </p>
-                <p className="text-2xl font-bold mt-1">
+                <p className="text-xl sm:text-2xl font-bold mt-1">
                   {isMentor ? "4.8" : "7"}
                 </p>
               </div>
-              <div className="bg-secondary-100 p-3 rounded-full">
+              <div className="bg-secondary-100 p-2 sm:p-3 rounded-full">
                 <Icon 
                   icon={isMentor ? "lucide:star" : "lucide:users"} 
-                  className="text-secondary text-xl" 
+                  className="text-secondary text-lg sm:text-xl" 
                 />
               </div>
             </div>
@@ -82,16 +83,16 @@ const DashboardPage: React.FC = () => {
         </Card>
 
         <Card className="card-shadow border-none">
-          <CardBody className="p-6">
+          <CardBody className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs sm:text-sm text-gray-500">
                   {isMentor ? "Hours Mentored" : "Hours Learning"}
                 </p>
-                <p className="text-2xl font-bold mt-1">36</p>
+                <p className="text-xl sm:text-2xl font-bold mt-1">36</p>
               </div>
-              <div className="bg-primary-100 p-3 rounded-full">
-                <Icon icon="lucide:clock" className="text-primary text-xl" />
+              <div className="bg-primary-100 p-2 sm:p-3 rounded-full">
+                <Icon icon="lucide:clock" className="text-primary text-lg sm:text-xl" />
               </div>
             </div>
           </CardBody>
@@ -99,13 +100,13 @@ const DashboardPage: React.FC = () => {
       </div>
 
       {/* Chart and Upcoming Sessions */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         <Card className="card-shadow border-none lg:col-span-2">
           <CardHeader className="pb-0">
-            <h2 className="text-lg font-semibold">Sessions per Week</h2>
+            <h2 className="text-base sm:text-lg font-semibold">Sessions per Week</h2>
           </CardHeader>
           <CardBody className="overflow-hidden">
-            <div className="h-80">
+            <div className="h-64 sm:h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
                   data={chartData}

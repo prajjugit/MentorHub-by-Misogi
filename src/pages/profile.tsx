@@ -43,31 +43,32 @@ const ProfilePage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">My Profile</h1>
+    <div className="space-y-6 px-2 sm:px-4 md:px-8 py-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-xl sm:text-2xl font-bold">My Profile</h1>
         <Button 
           color="primary"
           onPress={handleSaveProfile}
           isLoading={isLoading}
+          className="w-full sm:w-auto"
         >
           Save Changes
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Profile Info */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
           <Card className="card-shadow border-none">
             <CardHeader>
-              <h2 className="text-lg font-semibold">Basic Information</h2>
+              <h2 className="text-base sm:text-lg font-semibold">Basic Information</h2>
             </CardHeader>
-            <CardBody className="space-y-6">
-              <div className="flex flex-col sm:flex-row gap-6">
+            <CardBody className="space-y-4 sm:space-y-6">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 <div className="flex flex-col items-center">
                   <Avatar 
                     src={user?.avatar} 
-                    className="w-24 h-24"
+                    className="w-20 h-20 sm:w-24 sm:h-24"
                     isBordered
                   />
                   <Button 
@@ -80,7 +81,7 @@ const ProfilePage: React.FC = () => {
                   </Button>
                 </div>
                 
-                <div className="flex-1 space-y-4">
+                <div className="flex-1 space-y-3 sm:space-y-4">
                   <Input
                     label="Full Name"
                     placeholder="Your full name"
@@ -107,7 +108,7 @@ const ProfilePage: React.FC = () => {
           
           <Card className="card-shadow border-none">
             <CardHeader>
-              <h2 className="text-lg font-semibold">About Me</h2>
+              <h2 className="text-base sm:text-lg font-semibold">About Me</h2>
             </CardHeader>
             <CardBody>
               <Textarea
@@ -122,10 +123,10 @@ const ProfilePage: React.FC = () => {
           
           <Card className="card-shadow border-none">
             <CardHeader>
-              <h2 className="text-lg font-semibold">Skills & Expertise</h2>
+              <h2 className="text-base sm:text-lg font-semibold">Skills & Expertise</h2>
             </CardHeader>
             <CardBody>
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <Input
                   label="Add Skills"
                   placeholder="Type a skill and press Enter"
@@ -156,11 +157,11 @@ const ProfilePage: React.FC = () => {
         </div>
         
         {/* Sidebar */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {isMentor && (
             <Card className="card-shadow border-none">
               <CardHeader>
-                <h2 className="text-lg font-semibold">Availability</h2>
+                <h2 className="text-base sm:text-lg font-semibold">Availability</h2>
               </CardHeader>
               <CardBody>
                 <AvailabilitySelector />
@@ -170,9 +171,9 @@ const ProfilePage: React.FC = () => {
           
           <Card className="card-shadow border-none">
             <CardHeader>
-              <h2 className="text-lg font-semibold">Account Settings</h2>
+              <h2 className="text-base sm:text-lg font-semibold">Account Settings</h2>
             </CardHeader>
-            <CardBody className="space-y-4">
+            <CardBody className="space-y-3 sm:space-y-4">
               <Button 
                 variant="flat" 
                 color="primary" 

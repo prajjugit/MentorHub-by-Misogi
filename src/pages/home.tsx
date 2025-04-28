@@ -7,23 +7,23 @@ const HomePage: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="gradient-bg text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-10 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+      <section className="gradient-bg text-white py-12 sm:py-20">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-0">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
                 Connect with Expert Mentors to Accelerate Your Career
               </h1>
-              <p className="text-lg mb-8 opacity-90">
+              <p className="text-base sm:text-lg mb-6 sm:mb-8 opacity-90">
                 Schedule one-on-one mentoring sessions with experienced developers who can help you grow your skills and advance your career.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <Button 
                   as={RouterLink} 
                   to="/register" 
                   color="secondary" 
                   size="lg"
-                  className="font-medium"
+                  className="font-medium w-full sm:w-auto"
                 >
                   Get Started
                 </Button>
@@ -33,17 +33,17 @@ const HomePage: React.FC = () => {
                   variant="bordered" 
                   color="default" 
                   size="lg"
-                  className="bg-white/10 backdrop-blur-sm font-medium"
+                  className="bg-white/10 backdrop-blur-sm font-medium w-full sm:w-auto"
                 >
                   Browse Mentors
                 </Button>
               </div>
             </div>
-            <div className="md:w-1/2 md:pl-10">
+            <div className="md:w-1/2 md:pl-10 w-full">
               <img 
                 src="https://img.heroui.chat/image/ai?w=600&h=400&u=mentoring" 
                 alt="Mentoring session" 
-                className="rounded-xl shadow-lg w-full"
+                className="rounded-xl shadow-lg w-full object-cover"
               />
             </div>
           </div>
@@ -51,38 +51,38 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="py-10 sm:py-16 bg-white">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">500+</div>
-              <p className="text-gray-600">Active Mentors</p>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-1 sm:mb-2">500+</div>
+              <p className="text-gray-600 text-sm sm:text-base">Active Mentors</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">10,000+</div>
-              <p className="text-gray-600">Mentoring Sessions</p>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-1 sm:mb-2">10,000+</div>
+              <p className="text-gray-600 text-sm sm:text-base">Mentoring Sessions</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">95%</div>
-              <p className="text-gray-600">Satisfaction Rate</p>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-1 sm:mb-2">95%</div>
+              <p className="text-gray-600 text-sm sm:text-base">Satisfaction Rate</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">How MentorHub Works</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+      <section id="features" className="py-12 sm:py-20 bg-gray-50">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">How MentorHub Works</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
               Our platform makes it easy to connect with experienced mentors and schedule productive mentoring sessions.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             <Card className="card-shadow border-none">
-              <CardBody className="text-center p-8">
+              <CardBody className="text-center p-6 sm:p-8">
                 <div className="bg-primary-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                   <Icon icon="lucide:user-plus" className="text-primary text-2xl" />
                 </div>
